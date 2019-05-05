@@ -1,0 +1,12 @@
+﻿@model Employee
+
+<tr id="@Model.Id">
+    <td>@Model.Name</td>
+    <td>@Model.Email</td>
+    <td>@Model.Department.Name</td>
+    <td>@Model.Age</td>
+    <td>@Model.Gender</td>
+    <td>
+        @Html.Partial("_PartialControlbuttons", Model.Id)
+    </td>
+</tr>

@@ -1,0 +1,17 @@
+﻿@model int
+@{ 
+    var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+
+ }
+@Html.ActionLink("Details", "Details", new { id = @Model}, new { @class = "btn btn-primary btn-sm" })
+@if (User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Edit", "Edit", new { id = @Model }, new { @class = "btn btn-success btn-sm" })
+    <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="confirmDelete(@Model)" />
+
+}
+else if (User.IsInRole("Manager") && controllerName == "Employees")
+{
+    @Html.ActionLink("Edit", "Edit", new { id = @Model }, new { @class = "btn btn-success btn-sm" })
+    <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="confirmDelete(@Model)" />
+}

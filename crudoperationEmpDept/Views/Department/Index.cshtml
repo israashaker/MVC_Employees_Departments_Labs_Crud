@@ -1,0 +1,43 @@
+﻿@model List<Department>
+@{
+    ViewBag.Title = "Departments";
+}
+
+<h2>Departments</h2>
+
+<br/>
+<br/>
+@if (User.IsInRole("Admin"))
+{
+    <a href="/department/add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Add new Department</a>
+}
+@if(Model == null || Model.Count==0){
+    <h4>No Departments Found</h4>
+}
+else {
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Department dept in Model)
+        {
+            <tr id="@dept.Id">
+                <td>@dept.Name</td>
+                <td>
+                    @Html.Partial("_PartialControlbuttons",dept.Id)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+@section scripts{
+    
+@*<script src="~/Scripts/siteScripts/confirmDeleteDept.js"></script>*@
+    @Scripts.Render("~/bundles/confirmDeleteDept")
+    }
