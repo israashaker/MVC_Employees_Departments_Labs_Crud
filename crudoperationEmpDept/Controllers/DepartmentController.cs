@@ -74,6 +74,7 @@ namespace crudoperationEmpDept.Controllers
             }
             return false;
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
             var department = context.Departments.Include("Employees").FirstOrDefault(e=>e.Id==id);
