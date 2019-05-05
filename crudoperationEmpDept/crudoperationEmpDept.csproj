@@ -294,6 +294,8 @@
     <Content Include="Views\Department\AddEdit.cshtml" />
     <Content Include="Views\Shared\_PartialAddEmployee.cshtml" />
     <Content Include="Views\Shared\_PartialEmployee.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

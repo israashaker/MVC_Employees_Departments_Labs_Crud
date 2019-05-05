@@ -74,5 +74,14 @@ namespace crudoperationEmpDept.Controllers
             }
             return false;
         }
+        public ActionResult Details(int id)
+        {
+            var department = context.Departments.Include("Employees").FirstOrDefault(e=>e.Id==id);
+            if(department != null)
+            {
+                return View(department);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

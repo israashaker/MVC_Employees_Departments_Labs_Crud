@@ -93,5 +93,15 @@ namespace crudoperationEmpDept.Controllers
             }
             return false;
         }
+        [Authorize(Roles = "Admin,Manager")]
+        public ActionResult Details(int id)
+        {
+            var employee = context.Employees.FirstOrDefault(e=>e.Id==id);
+            if(employee != null)
+            {
+                return View(employee);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
